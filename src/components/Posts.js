@@ -7,8 +7,11 @@ class Posts extends Component {
 		let {posts} = this.props;
 		return (
 			<div>
-				{posts && posts.map((post) => {
-					return (<div>{post.title}</div>)
+				{posts && posts.map((item) => {
+					return (
+						<div>
+ 						<Link to={`post/${item.id}`}>{item.title}</Link>
+ 					</div>)
 				})}
 		</div>
 		)

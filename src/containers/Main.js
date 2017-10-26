@@ -10,17 +10,21 @@ import Categories from '../components/Categories';
 import Posts from '../components/Posts';
 
 // Link is your replacement for anchor tags.
+// This will display the post and categories from the API without clicking
 class Main extends Component {
+  componentDidMount() {
+    this.props.getCategories();
+    this.props.receivePostsSuccess();
+  }
   render() {
-    let {categories,getCategories,posts,receivePostsSuccess} = this.props;
+    let {categories,posts} = this.props;
     return (
       <div>
-        <button onClick={getCategories}>Receive Categories</button>
-        <br></br>
+        <h1>Categories</h1>
         <Categories categories={categories} />
-        <button onClick={receivePostsSuccess}>Receive Posts</button>
-        <Posts posts={posts}/>
         <br></br>
+        <h1>Posts</h1>
+        <Posts posts={posts}/>
         <Link to="/create">Add New Post</Link>
       </div>
     )

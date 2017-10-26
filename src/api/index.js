@@ -14,3 +14,9 @@ export function receivePostsSuccess() {
       return out.json()
   })
 }
+
+export function receivePostsIDSuccess(id){
+    return fetch(`http://localhost:5001/posts/${id}`, header).then( out => {
+        return out.json()
+    })
+}
