@@ -15,8 +15,9 @@ class posts extends Component {
         {this.props.postId && <div>
 				<h1>{this.props.postId.title}</h1>
  					<p>{this.props.postId.body}</p>
+          <Link to={'/create/${this.props.postId.id}'}>Edit</Link>
  				</div>}
- 				<Link to="/create/1">Edit</Link>
+
  			</div>
  		)
  	}

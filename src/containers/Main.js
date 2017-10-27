@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import {getCategories} from '../actions/categoryAction';
-import {receivePostsSuccess} from '../actions/postAction';
+import {receivePostsSuccess,filterPosts} from '../actions/postAction';
 
 import Categories from '../components/Categories';
 import Posts from '../components/Posts';
@@ -13,18 +13,18 @@ import Posts from '../components/Posts';
 // This will display the post and categories from the API without clicking
 class Main extends Component {
   componentDidMount() {
-    this.props.getCategories();
     this.props.receivePostsSuccess();
+    this.props.getCategories();
   }
   render() {
-    let {categories,posts} = this.props;
+    let {categories,posts,filterPosts,filter} = this.props;
     return (
       <div>
         <h1>Categories</h1>
         <Categories categories={categories} />
         <br></br>
         <h1>Posts</h1>
-        <Posts posts={posts}/>
+        <Posts posts={posts} filterPosts={filterPosts} filter={filter}/>
         <Link to="/create">Add New Post</Link>
       </div>
     )
@@ -39,7 +39,8 @@ class Main extends Component {
  function mapStateToProps ({categories, posts}) {
    return {
    	categories: categories.categories,
-   	posts: posts.posts
+   	posts: posts.posts,
+    filter:posts.filter
    }
  }
 
@@ -47,7 +48,8 @@ class Main extends Component {
  function mapDispatchToProps (dispatch) {
    return {
    	getCategories: () => dispatch(getCategories()),
-   receivePostsSuccess: () => dispatch(receivePostsSuccess())
+   receivePostsSuccess: () => dispatch(receivePostsSuccess()),
+   filterPosts: (filter) => dispatch(filterPosts(filter))
    }
  }
 

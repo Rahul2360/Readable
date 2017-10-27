@@ -20,3 +20,9 @@ export function receivePostsIDSuccess(id){
         return out.json()
     })
 }
+
+export function categoryPostsSuccess(category) {
+    return fetch(`http://localhost:5001/${category}/posts`, header).then( out => {
+        return out.json()
+    })
+}

@@ -1,5 +1,5 @@
 import {combineReducers} from 'redux';
-import {RECEIVE_POSTS,RECEIVE_POSTS_ID} from '../actions/postAction';
+import {RECEIVE_POSTS,RECEIVE_POSTS_ID,CATEGORY_POSTS,FILTER_POSTS} from '../actions/postAction';
 import {RECEIVE_CATEGORIES} from '../actions/categoryAction';
 
 function categories (state={},action){
@@ -25,6 +25,16 @@ function posts (state={},action){
       return {
         ...state,
         postId:action.post,
+      }
+      case CATEGORY_POSTS:
+      return {
+        ...state,
+        categorypost:action.post,
+      }
+      case FILTER_POSTS:
+      return {
+        ...state,
+        filter:action.filter,
       }
       default:
         return state

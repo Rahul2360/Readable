@@ -4,12 +4,13 @@ import { Link } from 'react-router-dom';
 
 class postform extends Component {
 
- 	render() {
- 		const {title} = this.props;
+ 	render() { 
 
  		return (
  			<form>
- 				<input type="text" value={title} />
+        <input type="text" value={this.props ? this.props.title : ''} />
+ 				<textarea value={this.props ? this.props.body : ''}></textarea>
+        <div>RB</div>
  			</form>
  		)
  	}

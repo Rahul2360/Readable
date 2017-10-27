@@ -1,6 +1,8 @@
 import * as API from '../api';
 export const RECEIVE_POSTS='RECEIVE_POSTS';
 export const RECEIVE_POSTS_ID='RECEIVE_POSTS_ID';
+export const FILTER_POSTS='FILTER_POSTS';
+export const CATEGORY_POSTS='CATEGORY_POSTS';
 
 // It will get the posts from the server and display on the screen.
 export const receivePosts = posts => {
@@ -27,5 +29,27 @@ export const receivePostsID = posts => {
 export const receivePostsIDSuccess = (id,posts) => (dispatch) => {
   API.receivePostsIDSuccess(id,posts).then((data) => {
     dispatch(receivePostsID(data))
+  })
+}
+
+// This function is used for the filtering the posts.
+export const filterPosts = (filter) => {
+  return {
+    type:FILTER_POSTS,
+    filter
+  }
+}
+
+// This function helps for finding the category posts i.e. a category contains may posts.
+export const categoryPosts = posts => {
+  return {
+    type:CATEGORY_POSTS,
+    posts
+  }
+}
+
+export const categoryPostsSuccess = (category) => (dispatch) => {
+  API.categoryPostsSuccess(category).then((data) => {
+    dispatch(categoryPosts(data))
   })
 }
