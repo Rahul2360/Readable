@@ -24,7 +24,7 @@ class Main extends Component {
         <Categories categories={categories} />
         <br></br>
         <h1>Posts</h1>
-        <Posts posts={posts} filterPosts={filterPosts} filter={filter}/>
+        <Posts filterPosts={filterPosts} filter={filter}  posts={posts} />
         <Link to="/create">Add New Post</Link>
       </div>
     )

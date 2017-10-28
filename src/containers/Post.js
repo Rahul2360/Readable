@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import {receivePostsID} from '../actions/postAction';
 import {connect} from 'react-redux';
+import  {votePost} from '../components/votePost';
+import {receivePostsSuccess,votepost} from '../actions/postAction';
 
 class posts extends Component {
   componentDidMount() {
@@ -10,12 +12,16 @@ class posts extends Component {
   this.props.receivePostsID(postID);
 }
    render() {
+     let {postId,votepost} = this.props;
   	return (
  			<div>
-        {this.props.postId && <div>
-				<h1>{this.props.postId.title}</h1>
- 					<p>{this.props.postId.body}</p>
-          <Link to={'/create/${this.props.postId.id}'}>Edit</Link>
+        {postId && <div>
+				<h1>{postId.title}</h1>
+ 					<p>{postId.body}</p>
+          <p>{postId.author}</p>
+          <p>{postId.voteScore}</p>
+          <Link to={'/create/${postId.id}'}>Edit</Link>
+          <votePost handle={votepost} postID={postId.id} />
  				</div>}
 
  			</div>
@@ -25,13 +31,14 @@ class posts extends Component {
 
  function mapStateToProps ({posts}) {
     return {
-    	postId: posts.postId
+    	postId:posts.postId,
     }
   }
 
   function mapDispatchToProps (dispatch) {
     return {
-    	receivePostsID: (postID) => dispatch(receivePostsID(postID))
+    	receivePostsID: (postID) => dispatch(receivePostsID(postID)),
+      votepost:(postID,vote) =>dispatch(votepost(postID,vote))
     }
   }
 

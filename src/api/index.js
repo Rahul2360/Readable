@@ -26,3 +26,13 @@ export function categoryPostsSuccess(category) {
         return out.json()
     })
 }
+
+export function votePost(id,vote){
+  return fetch('http://localhost:5001/post/${id}', {
+    headers:header.headers,
+    method:'POST',
+    body:JSON.stringify(vote)
+  }).then(out => {
+    return out.json()
+  })
+}

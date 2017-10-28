@@ -29,7 +29,7 @@ function posts (state={},action){
       case CATEGORY_POSTS:
       return {
         ...state,
-        categorypost:action.post,
+        posts:action.posts,
       }
       case FILTER_POSTS:
       return {

@@ -2,17 +2,17 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
-import postform from '../components/postform';
+import Postform from '../components/Postform';
 import {connect} from 'react-redux';
 import {receivePostsID} from '../actions/postAction'
 
 class create extends Component {
  	render() {
     let {postId} = this.props;
-    const match = this.props.match.params.id;
+    const matchs = this.props.match.params.id;
  		return (
  			<div>
- 				<postform post = {match ? postId : null}/>
+ 				<Postform post={matchs ? postId : null}/>
         Hello world
  			</div>
  		)

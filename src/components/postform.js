@@ -3,14 +3,13 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 class postform extends Component {
-
- 	render() { 
-
+  componentDidMount(){}
+ 	render() {
+    const {posts} = this.props;
  		return (
  			<form>
-        <input type="text" value={this.props ? this.props.title : ''} />
- 				<textarea value={this.props ? this.props.body : ''}></textarea>
-        <div>RB</div>
+        <input type="text" value={posts ? posts.title : ''} />
+ 				<textarea value={posts ? posts.body : ''}></textarea>
  			</form>
  		)
  	}
