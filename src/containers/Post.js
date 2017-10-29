@@ -19,7 +19,7 @@ class posts extends Component {
  					<p>{postId.body}</p>
           <p>{postId.author}</p>
           <p>{postId.voteScore}</p>
-          <Link to={'/create/${postId.id}'}>Edit</Link><br></br>
+          <Link to={`/create/${postId.id}`}>Edit</Link><br></br>
           <PostVote handle={votePost} postID={postId.id} />
           <button onClick={() => deletePost(postId.id)}>Delete</button>
  				</div>}

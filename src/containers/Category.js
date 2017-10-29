@@ -3,12 +3,12 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-import {getPosts,categoryPosts,filterPosts} from '../actions/postAction';
+import {categoryPosts,filterPosts} from '../actions/postAction';
 import {getCategories} from '../actions/categoryAction';
-import Post from '../components/Posts';
+import Posts from '../components/Posts';
 import Categories from '../components/Categories';
 
-class categories extends Component {
+class Category extends Component {
   componentDidMount() {
     let category = this.props.match.params.name;
     this.props.categoryPosts(category);
@@ -26,7 +26,7 @@ class categories extends Component {
     return (
       <div>
         <Categories categories={categories}/>
-        <Post posts={posts} filter={filter} filterPosts={filterPosts}> </Post>
+        <Posts posts={posts} filter={filter} filterPosts={filterPosts}> </Posts>
         <Link to="/create">Add Post</Link>
         Hello world
       </div>
@@ -50,4 +50,4 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-export default connect(mapStateToProps,mapDispatchToProps)(categories)
+export default connect(mapStateToProps,mapDispatchToProps)(Category)

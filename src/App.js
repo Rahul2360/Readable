@@ -4,10 +4,10 @@ import './App.css';
 import {withRouter, Route} from 'react-router-dom';
 import {connect} from 'react-redux';
 import Main from './containers/Main';
-import Categories from './containers/Categories';
+import Category from './containers/Category';
 import CreateForm from './containers/CreateForm';
 import Post from './containers/Post';
-import {getPosts} from './actions/postAction';
+import {receivePosts} from './actions/postAction';
 import {getCategories} from './actions/categoryAction';
 
 // We have Four containers Main,Categories,Create,Post.
@@ -21,7 +21,7 @@ class App extends Component {
         <div className="App">
           <Route exact path="/" render={() => (<Main />)} />
           <Route exact path="/post/:id" component={Post} />
-          <Route exact path="/categories/:name" component={Categories} />
+          <Route exact path="/category/:name" component={Category} />
           <Route exact path="/create/:id" component={CreateForm} />
           <Route exact path="/create" component={CreateForm} />
         </div>

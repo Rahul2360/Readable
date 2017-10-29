@@ -9,10 +9,10 @@ class Categories extends Component {
 		let {categories} = this.props;
 		return (
 			<div>
-					{categories && categories.map((category) => {
+					{categories && categories.map((item) => {
 						return (
 
-							<Link to={'/category/${category.name}'}>{category.name}</Link>
+							<Link to={`/category/${item.name}`}>{item.name}</Link>
 
 						)
 					})
