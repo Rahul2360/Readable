@@ -20,14 +20,14 @@ export const receivePostsSuccess = () => (dispatch) => {
 }
 
 // In this we can go to the specfic post i.e. we can click on any post so that we can change or edit the post.
-export const receivePostsID = posts => {
+export const receivePostsID = post => {
   return {
     type:RECEIVE_POSTS_ID,
-    posts
+    post
   }
 }
-export const receivePostsIDSuccess = (id,posts) => (dispatch) => {
-  API.receivePostsIDSuccess(id,posts).then((data) => {
+export const receivePostsIDSuccess = (id,option) => (dispatch) => {
+  API.receivePostsIDSuccess(id,option).then((data) => {
     dispatch(receivePostsID(data))
   })
 }
