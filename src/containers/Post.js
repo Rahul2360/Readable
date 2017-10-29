@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import {receivePostsID} from '../actions/postAction';
 import {connect} from 'react-redux';
-import  {votePost} from '../components/votePost';
-import {receivePostsSuccess,votepost} from '../actions/postAction';
+import  {postVote} from '../components/postVote';
+import {receivePostsSuccess,votePost,deletePost} from '../actions/postAction';
 
 class posts extends Component {
   componentDidMount() {
@@ -12,7 +12,7 @@ class posts extends Component {
   this.props.receivePostsID(postID);
 }
    render() {
-     let {postId,votepost} = this.props;
+     let {postId,votepost,deletePost} = this.props;
   	return (
  			<div>
         {postId && <div>
@@ -21,7 +21,8 @@ class posts extends Component {
           <p>{postId.author}</p>
           <p>{postId.voteScore}</p>
           <Link to={'/create/${postId.id}'}>Edit</Link>
-          <votePost handle={votepost} postID={postId.id} />
+          <postVote handle={votePost} postID={postId.id} />
+          <button onClick={() => deletePost(postId.id)}>Delete</button>
  				</div>}
 
  			</div>
@@ -38,7 +39,8 @@ class posts extends Component {
   function mapDispatchToProps (dispatch) {
     return {
     	receivePostsID: (postID) => dispatch(receivePostsID(postID)),
-      votepost:(postID,vote) =>dispatch(votepost(postID,vote))
+      votePost:(postID,vote) =>dispatch(votePost(postID,vote)),
+      deletePost:(postID) => dispatch(deletePost(postID))
     }
   }
 

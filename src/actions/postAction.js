@@ -3,8 +3,8 @@ export const RECEIVE_POSTS='RECEIVE_POSTS';
 export const RECEIVE_POSTS_ID='RECEIVE_POSTS_ID';
 export const FILTER_POSTS='FILTER_POSTS';
 export const CATEGORY_POSTS='CATEGORY_POSTS';
-export const VOTE_UP ='VOTE_UP';
-export const VOTE_DOWN ='VOTE_DOWN';
+export const VOTE_POST ='VOTE_POST';
+export const DELETE_POST ='DELETE_POST';
 
 // It will get the posts from the server and display on the screen.
 export const receivePosts = posts => {
@@ -54,19 +54,26 @@ export const categoryPostsSuccess = (category) => (dispatch) => {
 }
 
 // This function is used for the voting the particular post.
-export const votepost = (id,vote) => dispatch => {
-  API.votePost(id.vote).then((data) => {
-    if(vote.option === 'voteup') {
-      dispatch({
-        type:VOTE_UP,
-        id
-      })
-    }
-    else {
-      dispatch({
-        type:VOTE_DOWN,
-        id
-      })
-    }
+export const votePost = (post) => {
+   return {
+     type: VOTE_POST,
+     post
+   }
+ }
+ export const votePostSuccess = (postID, vote) => (dispatch) => {
+ 	API.votePostSuccess(postID,vote).then((data) => {
+    dispatch(votePost(data))
+  })
+}
+
+export const deletePost = post => {
+return {
+  type:DELETE_POST,
+  post
+}
+}
+export const deletePostSuccess = (postID) =>(dispatch) => {
+  API.deletePostSuccess(postID).then((data) => {
+    dispatch(deletePost(data))
   })
 }

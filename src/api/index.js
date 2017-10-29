@@ -15,8 +15,12 @@ export function receivePostsSuccess() {
   })
 }
 
-export function receivePostsIDSuccess(id){
-    return fetch(`http://localhost:5001/posts/${id}`, header).then( out => {
+export function receivePostsIDSuccess(id,posts){
+    return fetch(`http://localhost:5001/posts/${id}`,{
+		 headers:header.headers,
+        method:'PUT',
+        body:JSON.stringify(posts)
+	}).then( out => {
         return out.json()
     })
 }
@@ -27,12 +31,18 @@ export function categoryPostsSuccess(category) {
     })
 }
 
-export function votePost(id,vote){
-  return fetch('http://localhost:5001/post/${id}', {
+export function votePostSuccess(postID,vote){
+  return fetch('http://localhost:5001/posts/${postID}', {
     headers:header.headers,
     method:'POST',
-    body:JSON.stringify(vote)
+    body:JSON.stringify({vote:vote})
   }).then(out => {
+    return out.json()
+  })
+}
+
+export function deletePostSuccess(postID) {
+  return fetch(`http://localhost:5001/posts/${postID}`, header).then(out =>{
     return out.json()
   })
 }
