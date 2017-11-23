@@ -6,6 +6,7 @@ export const CATEGORY_POSTS='CATEGORY_POSTS';
 export const VOTE_POST ='VOTE_POST';
 export const DELETE_POST ='DELETE_POST';
 export const GET_COMMENTS ='GET_COMMENTS';
+export const CREATE_POST = 'CREATE_POST';
 // It will get the posts from the server and display on the screen.
 export const receivePosts = posts => {
   return  {
@@ -26,8 +27,8 @@ export const receivePostsID = post => {
     post
   }
 }
-export const receivePostsIDSuccess = (id,option) => (dispatch) => {
-  API.receivePostsIDSuccess(id,option).then((data) => {
+export const receivePostsIDSuccess = (id) => (dispatch) => {
+  API.receivePostsIDSuccess(id).then((data) => {
     dispatch(receivePostsID(data))
   })
 }
@@ -63,6 +64,8 @@ export const votePost = (post) => {
  export const votePostSuccess = (postID, vote) => (dispatch) => {
  	API.votePostSuccess(postID,vote).then((data) => {
     dispatch(votePost(data))
+    dispatch(receivePostsSuccess())
+    dispatch(receivePostsIDSuccess(postID))
   })
 }
 
@@ -75,6 +78,7 @@ return {
 export const deletePostSuccess = (postID) =>(dispatch) => {
   API.deletePostSuccess(postID).then((data) => {
     dispatch(deletePost(data))
+    dispatch(receivePostsSuccess())
   })
 }
 
@@ -88,5 +92,19 @@ export const getComments = comments => {
 export const getCommentsSuccess = postID => dispatch => {
   API.getCommentsSuccess(postID).then(data => {
     dispatch(getComments(data))
+  })
+}
+
+export const createPost = post => {
+  return {
+    type:CREATE_POST,
+    post
+  }
+}
+
+export const createPostSuccess = options => dispatch => {
+  API.createPostSuccess(options).then(data => {
+    dispatch(createPost(data))
+    dispatch(receivePostsSuccess())
   })
 }

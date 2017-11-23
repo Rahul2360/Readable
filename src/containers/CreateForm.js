@@ -4,15 +4,15 @@ import { Link } from 'react-router-dom';
 
 import Postform from '../components/Postform';
 import {connect} from 'react-redux';
-import {receivePostsID} from '../actions/postAction'
+import {receivePostsID,createPostSuccess} from '../actions/postAction'
 
 class create extends Component {
  	render() {
-    let {postId} = this.props;
+    let {postId,createPostSuccess} = this.props;
     const matchs = this.props.match.params.id;
  		return (
  			<div>
- 				<Postform post={matchs ? postId : null}/>
+ 				<Postform  createPostSuccess={createPostSuccess}/>
         Hello world
  			</div>
  		)
@@ -26,7 +26,8 @@ const mapStateToProps = post => {
 }
 const mapDispatchToProps = (dispatch) => {
   return {
-    receivePostsID: (postID) => dispatch(receivePostsID(postID))
+    receivePostsID: (postID) => dispatch(receivePostsID(postID)),
+    createPostSuccess:(options) => dispatch(createPostSuccess(options))
   }
 }
 

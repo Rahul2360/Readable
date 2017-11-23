@@ -6,8 +6,8 @@ class votePost extends Component {
  		let {handle, postID} = this.props;
  		return (
  			<div>
- 				<button onClick={() => handle(postID, 'voteup')}>up</button>
- 				<button onClick={() => handle(postID, 'votedown')}>down</button>
+ 				<button onClick={() => handle(postID, 'upVote')}>up</button>
+ 				<button onClick={() => handle(postID, 'downVote')}>down</button>
  			</div>
  		)
  	}

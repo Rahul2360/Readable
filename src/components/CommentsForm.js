@@ -18,7 +18,7 @@ import { Link } from 'react-router-dom';
  		options.timestamp = new Date().getTime();
  		options.parentId = this.props.post.id;
 
- 		this.props.addComment(options);
+ 		this.props.addComment(options,this.props.post.id);
  	}
 
  	render() {
@@ -26,8 +26,15 @@ import { Link } from 'react-router-dom';
 
  		return (
  			<form onSubmit={this.handleSubmit}>
-        		<input type="text" name="author" value={comment ?comment.author:''} />
- 				<textarea name="body" value={comment ?comment.body:''}></textarea>
+        <h3>Add new comment</h3>
+ 				<div>
+ 					<label htmlFor="author">author</label>
+ 					<input type="text" id="author" name="author" />
+ 				</div>
+ 				<div>
+ 					<label htmlFor="body">comment</label>
+ 					<textarea id="body" name="body"></textarea>
+ 				</div>
 				<button type="submit">submit</button>
  			</form>
  		)

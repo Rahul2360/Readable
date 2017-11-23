@@ -15,12 +15,12 @@ export function receivePostsSuccess() {
   })
 }
 
-export function receivePostsIDSuccess(id,posts){
-    return fetch(`http://localhost:5001/posts/${id}`,{
-		 headers:header.headers,
-        method:'PUT',
-        body:JSON.stringify(posts)
-	}).then( out => {
+export function receivePostsIDSuccess(id){
+    return fetch(`http://localhost:5001/posts/${id}`,header
+		// headers:header.headers,
+        //method:'PUT',
+        //body:JSON.stringify(posts)
+	).then( out => {
         return out.json()
     })
 }
@@ -42,7 +42,20 @@ export function votePostSuccess(postID,vote){
 }
 
 export function deletePostSuccess(postID) {
-  return fetch(`http://localhost:5001/posts/${postID}`, header).then(out =>{
+  return fetch(`http://localhost:5001/posts/${postID}`,{
+    headers:header.headers,
+    method:'DELETE'
+  }).then(out =>{
+    return out.json()
+  })
+}
+
+export function  createPostSuccess(options){
+  return fetch(`http://localhost:5001/posts`, {
+    headers:header.headers,
+    method:'POST',
+    body:JSON.stringify(options)
+  }).then(out => {
     return out.json()
   })
 }
@@ -54,7 +67,7 @@ export function getCommentsSuccess(postID) {
   })
 }
 
-export function addCommentsSuccess(options){
+export function addCommentsSuccess(options,postID){
   return fetch(`http://localhost:5001/comments`, {
     headers:header.headers,
     method:'POST',
@@ -64,7 +77,7 @@ export function addCommentsSuccess(options){
   })
 }
 
-export function voteCommentsSuccess(commentID,options){
+export function voteCommentsSuccess(commentID,options,postID){
   return fetch(`http://localhost:5001/comments/${commentID}`, {
     headers:header.headers,
     method:'POST',
@@ -75,10 +88,21 @@ export function voteCommentsSuccess(commentID,options){
 }
 
 
-export function deleteCommentsSuccess(commentID){
+export function deleteCommentsSuccess(commentID,postID){
   return fetch(`http://localhost:5001/comments/${commentID}`, {
     headers:header.headers,
     method:'DELETE'
+  }).then(out => {
+    return out.json()
+  })
+}
+
+
+export function updateCommentsSuccess(commentID,options,postID) {
+  return fetch(`http://localhost:5001/comments/${commentID}`,{
+    headers:header.headers,
+    method:'PUT',
+    body:JSON.stringify(options)
   }).then(out => {
     return out.json()
   })

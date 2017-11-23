@@ -3,11 +3,11 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import {connect} from 'react-redux';
 import  PostVote from '../components/postVote';
-import {receivePostsIDSuccess,votePost,deletePost} from '../actions/postAction';
+import {receivePostsIDSuccess,votePostSuccess,deletePostSuccess} from '../actions/postAction';
 import {getCommentsSuccess,filterComments,voteCommentsSuccess,addCommentsSuccess} from '../actions/commentsActions';
 import Comments from '../components/Comments';
 import CommentForm from '../components/CommentsForm';
-import {editComments,deleteComments} from '../actions/commentsActions';
+import {editComments,deleteCommentsSuccess,updateCommentsSuccess} from '../actions/commentsActions';
 
 class posts extends Component {
   componentDidMount() {
@@ -18,20 +18,21 @@ class posts extends Component {
    render() {
      let {postId,votepost,deletePost} = this.props;
      let {commentsId,filter,filterComments,voteCommentsSuccess,addCommentsSuccess} = this.props;
-     let {currentComment,editComments,deleteComments} = this.props;
+     let {currentComment,editComments,deleteCommentsSuccess} = this.props;
   	return (
  			<div>
         {postId && <div>
 				<h1>{postId.title}</h1>
- 					<p>{postId.body}</p>
-          <p>{postId.author}</p>
-          <p>{postId.voteScore}</p>
+ 					<p>body: {postId.body}</p>
+          <p>author:{postId.author}</p>
+          <p>votes: {postId.voteScore}</p>
+          <p>comments:{postId.comments}</p>
           <Link to={`/create/${postId.id}`}>Edit</Link><br></br>
-          <PostVote handle={votePost} postID={postId.id} />
-          <button onClick={() => deletePost(postId.id)}>Delete</button>
+          <PostVote handle={votePostSuccess} postID={postId.id} />
+          <button onClick={() => deletePostSuccess(postId.id)}>Delete</button>
  				</div>}
-        {commentsId && <Comments
-          handleVote={voteCommentsSuccess} filter={filter} filterComments={filterComments} comments={commentsId} handleEdit={editComments} handleDelete={deleteComments} />}
+        {postId && commentsId && <Comments
+          handleVote={voteCommentsSuccess} filter={filter} filterComments={filterComments} comments={commentsId} handleEdit={editComments} handleDelete={deleteCommentsSuccess} />}
           {postId && <CommentForm post={postId} addComment={addCommentsSuccess} comment={currentComment} />}
  			</div>
  		)
@@ -50,14 +51,15 @@ class posts extends Component {
   function mapDispatchToProps (dispatch) {
     return {
     	receivePostsIDSuccess: (postID) => dispatch(receivePostsIDSuccess(postID)),
-      votePost:(postID,vote) =>dispatch(votePost(postID,vote)),
-      deletePost:(postID) => dispatch(deletePost(postID)),
+      votePostSuccess:(postID,vote) =>dispatch(votePostSuccess(postID,vote)),
+      deletePostSuccess:(postID) => dispatch(deletePostSuccess(postID)),
       getCommentsSuccess:(postID) => dispatch(getCommentsSuccess(postID)),
       filterComments:(filter) => dispatch(filterComments(filter)),
-      addCommentsSuccess:(option) =>dispatch(addCommentsSuccess(option)),
-      voteCommentsSuccess:(commentID,options) => dispatch(voteCommentsSuccess(commentID,options)),
-      editComments:(comment) => dispatch(editComments(comment)),
-      deleteComments:(commentID) => dispatch(deleteComments(commentID))
+      addCommentsSuccess:(option,postID) =>dispatch(addCommentsSuccess(option)),
+      voteCommentsSuccess:(commentID,options,postID) => dispatch(voteCommentsSuccess(commentID,options)),
+      editComments:(comment,postID) => dispatch(editComments(comment)),
+      deleteCommentsSuccess:(commentID,postID) => dispatch(deleteCommentsSuccess(commentID)),
+      updateCommentsSuccess:(commentID,options,postID) => dispatch(updateCommentsSuccess(commentID,options,postID))
     }
   }
 

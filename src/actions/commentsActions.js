@@ -33,9 +33,10 @@ export const addComments = comment => {
   }
 }
 
-export const addCommentsSuccess = option => dispatch => {
-  API.addCommentsSuccess(option).then(data => {
+export const addCommentsSuccess = (options,postID) => dispatch => {
+  API.addCommentsSuccess(options,postID).then(data => {
     dispatch(addComments(data))
+    dispatch(getComments(postID))
   })
 }
 
@@ -46,9 +47,10 @@ export const voteComments = comment => {
   }
 }
 
-export const voteCommentsSuccess = (commentID,options) => dispatch => {
-  API.voteCommentsSuccess(commentID,options).then(data => {
+export const voteCommentsSuccess = (commentID,options,postID) => dispatch => {
+  API.voteCommentsSuccess(commentID,options,postID).then(data => {
     dispatch(voteComments(data))
+    dispatch(getComments(postID))
   })
 }
 
@@ -66,8 +68,23 @@ export const deleteComments = (comment) => {
   }
 }
 
-export const deleteCommentsSuccess = (commentID) => dispatch =>{
-  API.deleteCommentsSuccess(commentID).then(data => {
+export const deleteCommentsSuccess = (commentID,postID) => dispatch =>{
+  API.deleteCommentsSuccess(commentID,postID).then(data => {
     dispatch(deleteComments(data))
+    dispatch(getComments(postID))
+  })
+}
+
+export const updateComments = (comment) => {
+  return {
+    type:UPDATE_COMMENTS,
+    comment
+  }
+}
+
+export const updateCommentsSuccess = (commentID,options,postID) => dispatch => {
+  API.updateCommentsSuccess(commentID,options,postID).then(data => {
+    dispatch(updateComments(data))
+    dispatch(getComments(postID))
   })
 }
