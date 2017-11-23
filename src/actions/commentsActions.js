@@ -51,3 +51,23 @@ export const voteCommentsSuccess = (commentID,options) => dispatch => {
     dispatch(voteComments(data))
   })
 }
+
+export const editComments = comment => {
+  return {
+    type:EDIT_COMMENTS,
+    comment
+  }
+}
+
+export const deleteComments = (comment) => {
+  return {
+    type:DELETE_COMMENTS,
+    comment
+  }
+}
+
+export const deleteCommentsSuccess = (commentID) => dispatch =>{
+  API.deleteCommentsSuccess(commentID).then(data => {
+    dispatch(deleteComments(data))
+  })
+}

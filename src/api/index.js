@@ -73,3 +73,13 @@ export function voteCommentsSuccess(commentID,options){
     return out.json()
   })
 }
+
+
+export function deleteCommentsSuccess(commentID){
+  return fetch(`http://localhost:5001/comments/${commentID}`, {
+    headers:header.headers,
+    method:'DELETE'
+  }).then(out => {
+    return out.json()
+  })
+}

@@ -7,6 +7,7 @@ import {receivePostsIDSuccess,votePost,deletePost} from '../actions/postAction';
 import {getCommentsSuccess,filterComments,voteCommentsSuccess,addCommentsSuccess} from '../actions/commentsActions';
 import Comments from '../components/Comments';
 import CommentForm from '../components/CommentsForm';
+import {editComments,deleteComments} from '../actions/commentsActions';
 
 class posts extends Component {
   componentDidMount() {
@@ -17,6 +18,7 @@ class posts extends Component {
    render() {
      let {postId,votepost,deletePost} = this.props;
      let {commentsId,filter,filterComments,voteCommentsSuccess,addCommentsSuccess} = this.props;
+     let {currentComment,editComments,deleteComments} = this.props;
   	return (
  			<div>
         {postId && <div>
@@ -29,8 +31,8 @@ class posts extends Component {
           <button onClick={() => deletePost(postId.id)}>Delete</button>
  				</div>}
         {commentsId && <Comments
-          handleVote={voteCommentsSuccess} filter={filter} filterComments={filterComments} comments={commentsId} />}
-          {postId && <CommentForm post={postId} addComment={addCommentsSuccess} />}
+          handleVote={voteCommentsSuccess} filter={filter} filterComments={filterComments} comments={commentsId} handleEdit={editComments} handleDelete={deleteComments} />}
+          {postId && <CommentForm post={postId} addComment={addCommentsSuccess} comment={currentComment} />}
  			</div>
  		)
  	}
@@ -40,7 +42,8 @@ class posts extends Component {
     return {
     	postId:posts.postId,
       commentsId: comments.commentsId,
-   	  filter: comments.filter
+   	  filter: comments.filter,
+      currentComment:comments.currentComment
     }
   }
 
@@ -52,7 +55,9 @@ class posts extends Component {
       getCommentsSuccess:(postID) => dispatch(getCommentsSuccess(postID)),
       filterComments:(filter) => dispatch(filterComments(filter)),
       addCommentsSuccess:(option) =>dispatch(addCommentsSuccess(option)),
-      voteCommentsSuccess:(commentID,options) => dispatch(voteCommentsSuccess(commentID,options))
+      voteCommentsSuccess:(commentID,options) => dispatch(voteCommentsSuccess(commentID,options)),
+      editComments:(comment) => dispatch(editComments(comment)),
+      deleteComments:(commentID) => dispatch(deleteComments(commentID))
     }
   }
 

@@ -5,7 +5,7 @@ import CommentVote from './CommentVote';
 
 class Comments extends Component {
   render() {
-  	let {comments, filter, filterComments,handleVote} = this.props;
+  	let {comments, filter, filterComments,handleVote,handleEdit,handleDelete} = this.props;
  		let sortedComments;
 
  		if (comments) {
@@ -36,6 +36,8 @@ class Comments extends Component {
  							votes: {item.voteScore}
  							time: {item.timestamp}
               <CommentVote commentID={item.id} handleVote={handleVote} />
+              <button onClick={() => handleEdit(item)}>edit</button>
+ +							<button onClick={() => handleDelete(item.id)}>delete</button>
  						</div>)
  					})}
  				</ul>
