@@ -5,7 +5,7 @@ export const receiveCategories = (categories) => {
     return {
         type:RECEIVE_CATEGORIES,
         categories
-    }
+    };
 }
 
 export const getCategories = () => (dispatch) => {

@@ -5,7 +5,7 @@ export const FILTER_POSTS='FILTER_POSTS';
 export const CATEGORY_POSTS='CATEGORY_POSTS';
 export const VOTE_POST ='VOTE_POST';
 export const DELETE_POST ='DELETE_POST';
-
+export const GET_COMMENTS ='GET_COMMENTS';
 // It will get the posts from the server and display on the screen.
 export const receivePosts = posts => {
   return  {
@@ -75,5 +75,18 @@ return {
 export const deletePostSuccess = (postID) =>(dispatch) => {
   API.deletePostSuccess(postID).then((data) => {
     dispatch(deletePost(data))
+  })
+}
+
+
+export const getComments = comments => {
+  return {
+    type:GET_COMMENTS,
+    comments
+  }
+}
+export const getCommentsSuccess = postID => dispatch => {
+  API.getCommentsSuccess(postID).then(data => {
+    dispatch(getComments(data))
   })
 }

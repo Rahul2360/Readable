@@ -9,6 +9,7 @@ class Categories extends Component {
 		let {categories} = this.props;
 		return (
 			<div>
+
 					{categories && categories.map((item) => {
 						return (
 
@@ -17,7 +18,6 @@ class Categories extends Component {
 						)
 					})
 				}
-				<br></br>
 			</div>
 		)
 	}

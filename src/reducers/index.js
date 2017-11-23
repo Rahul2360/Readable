@@ -1,6 +1,7 @@
 import {combineReducers} from 'redux';
 import {RECEIVE_POSTS,RECEIVE_POSTS_ID,CATEGORY_POSTS,FILTER_POSTS} from '../actions/postAction';
 import {RECEIVE_CATEGORIES} from '../actions/categoryAction';
+import {GET_COMMENTS,FILTER_COMMENTS} from '../actions/commentsActions';
 
 function categories (state={},action){
   switch(action.type) {
@@ -41,4 +42,21 @@ function posts (state={},action){
   }
 }
 
-export default combineReducers({posts,categories})
+function comments (state={},action){
+  switch(action.type) {
+    case GET_COMMENTS :
+      return {
+        ...state,
+        commentsId:action.comments,
+      }
+      case FILTER_COMMENTS:
+      return {
+        ...state,
+        filter:action.filter,
+      }
+      default:
+        return state
+  }
+}
+
+export default combineReducers({posts,categories,comments})

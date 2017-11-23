@@ -32,7 +32,7 @@ export function categoryPostsSuccess(category) {
 }
 
 export function votePostSuccess(postID,vote){
-  return fetch('http://localhost:5001/posts/${postID}', {
+  return fetch(`http://localhost:5001/posts/${postID}`, {
     headers:header.headers,
     method:'POST',
     body:JSON.stringify({vote:vote})
@@ -43,6 +43,33 @@ export function votePostSuccess(postID,vote){
 
 export function deletePostSuccess(postID) {
   return fetch(`http://localhost:5001/posts/${postID}`, header).then(out =>{
+    return out.json()
+  })
+}
+
+// COMMENTS SECTION
+export function getCommentsSuccess(postID) {
+  return fetch(`http://localhost:5001/posts/${postID}/comments`, header).then(out => {
+    return out.json()
+  })
+}
+
+export function addCommentsSuccess(options){
+  return fetch(`http://localhost:5001/comments`, {
+    headers:header.headers,
+    method:'POST',
+    body:JSON.stringify(options)
+  }).then(out => {
+    return out.json()
+  })
+}
+
+export function voteCommentsSuccess(commentID,options){
+  return fetch(`http://localhost:5001/comments/${commentID}`, {
+    headers:header.headers,
+    method:'POST',
+    body:JSON.stringify(options)
+  }).then(out => {
     return out.json()
   })
 }
