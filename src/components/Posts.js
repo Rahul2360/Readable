@@ -20,6 +20,7 @@ class Posts extends Component {
 				return 0;
 			});
 		}
+		// code is displayed on the screen
 		return (
 		<div>
 			<select value={filter} onChange={(event) => {filterPosts(event.target.value)}}>

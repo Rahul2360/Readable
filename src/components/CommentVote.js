@@ -2,9 +2,7 @@ import React, {Component} from 'react';
  import PropTypes from 'prop-types';
 
  class CommentVote extends Component {
- 	componentDidMount() {
- 	}
-
+ 	// upVote and downVote is picked up from the comments.js file at rreactnd-readable-starter-code
  	render() {
  		let {handleVote, commentID,postID} = this.props;
 

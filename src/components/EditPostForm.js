@@ -1,30 +1,33 @@
 import React, {Component} from 'react';
+import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
+// This component helps us to edit our post
 class EditPostForm extends Component {
 	state = {
 		title: '',
 		body: ''
 	}
-
+// Receive props before updation
 	componentWillReceiveProps(props) {
 		this.setState({
 			title: props.post.title,
 			body: props.post.body
 		});
 	}
-
+// change the title of the post
 	changeTitle = (event) => {
 		this.setState({
 			title: event.target.value
 		})
 	}
-
+// Change the body of the post
 	changeBody = (event) => {
 		this.setState({
 			body: event.target.value
 		})
 	}
-
+// submit the edited post
 	handleSubmit = (event) => {
 		event.preventDefault();
 
@@ -37,7 +40,7 @@ class EditPostForm extends Component {
 window.location = '/';
 		//this.props.editPostSuccess(this.props.post.id, options);
 	}
-
+// following code is displayed on the screen
 	render() {
 		return (
 			<form onSubmit={this.handleSubmit}>
