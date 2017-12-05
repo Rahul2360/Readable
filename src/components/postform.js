@@ -2,26 +2,26 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
-class postform extends Component {
+class Postform extends Component {
   componentDidMount(){}
   handleSubmit = (event) => {
  		event.preventDefault();
-
- 		let elems = event.currentTarget.elements;
+    // total size of posts
+ 		let size = event.currentTarget.elements;
  		let options = {};
 
- 		for (let i = 0; i < elems.length; i++) {
- 			options[elems[i].name] = elems[i].value;
+ 		for (let i = 0; i < size.length; i++) {
+ 			options[size[i].name] = size[i].value;
  		}
-
- 		options.id = Math.floor(Math.random() * 1000000);
+    // this will get a random id and their time of creation
+ 		options.id = Math.floor(Math.random() * 100000);
  		options.timestamp = new Date().getTime();
 
  		this.props.createPostSuccess(options);
+    window.location = '/';
  	}
  	render() {
-
-    const {createPostSuccess} = this.props;
+// Following is the form that display on the screen
  		return (
          <form onSubmit={this.handleSubmit}>
 				<h3>Create new post</h3>
@@ -47,4 +47,4 @@ class postform extends Component {
  	}
  }
 
- export default postform;
+ export default Postform;

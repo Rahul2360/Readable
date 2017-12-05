@@ -3,11 +3,11 @@ import PropTypes from 'prop-types';
 
 class votePost extends Component {
  	render() {
- 		let {handle, postID} = this.props;
+ 		let {handleVote, postID} = this.props;
  		return (
  			<div>
- 				<button onClick={() => handle(postID, 'upVote')}>up</button>
- 				<button onClick={() => handle(postID, 'downVote')}>down</button>
+ 				<button onClick={() => handleVote(postID, 'upVote')}>up</button>
+ 				<button onClick={() => handleVote(postID, 'downVote')}>down</button>
  			</div>
  		)
  	}

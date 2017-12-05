@@ -6,7 +6,7 @@ import Post from '../components/Post';
 class Posts extends Component {
 	render() {
 		let {posts,filter,filterPosts} = this.props;
-		let sortPostAsc,sortPostDesc;
+		let sortPostAsc;
  // Sorting the posts in the ascending order
 		if (posts) {
 			sortPostAsc = posts.sort((a,b) => {
@@ -30,8 +30,8 @@ class Posts extends Component {
 			</select>
 			<h2>Ascending Order</h2>
 			<ul>
-				{sortPostAsc && sortPostAsc.filter(item => !item.deleted).map((item) => {
- 					return (<Post post={item} />)
+				{sortPostAsc && sortPostAsc.filter(item => !item.deleted).map((item,index) => {
+ 					return (<Post key={index} post={item} />)
 				})}
 			</ul>
 		</div>

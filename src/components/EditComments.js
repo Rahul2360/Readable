@@ -2,7 +2,7 @@ import React, {Component} from 'react';
  import PropTypes from 'prop-types';
  import { Link } from 'react-router-dom';
 
- class EditCommentForm extends Component {
+ class EditComment extends Component {
  	state = {}
 
  	componentDidMount() {
@@ -12,7 +12,7 @@ import React, {Component} from 'react';
  		})
  	}
 
- 	handleChangeBody = (event) => {
+ 	changeBody = (event) => {
  		this.setState({
  			body: event.target.value
  		})
@@ -33,11 +33,11 @@ import React, {Component} from 'react';
  		return (
  			<form onSubmit={this.handleSubmit}>
  				<input name="author" type="text" value={this.state.author} />
- 				<textarea name="body" value={this.state.body} onChange={this.handleChangeBody}></textarea>
+ 				<textarea name="body" value={this.state.body} onChange={this.changeBody}></textarea>
  				<button type="submit">submit</button>
  			</form>
  		)
  	}
  }
 
- export default EditCommentForm;
+ export default EditComment;

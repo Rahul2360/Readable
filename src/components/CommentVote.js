@@ -10,8 +10,8 @@ import React, {Component} from 'react';
 
  		return (
  			<div>
- 				<button onClick={() => handleVote(commentID, 'upVote',postID)}>upvote</button>
- 				<button onClick={() => handleVote(commentID, 'downVote',postID)}>downvote</button>
+ 				<button onClick={() => handleVote(commentID, 'upVote',postID)}>Up</button>
+ 				<button onClick={() => handleVote(commentID, 'downVote',postID)}>Down</button>
  			</div>
  		)
  	}

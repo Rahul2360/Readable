@@ -14,7 +14,7 @@ import Posts from '../components/Posts';
 class Main extends Component {
   componentDidMount() {
     this.props.receivePostsSuccess();
-    this.props.getCategories();
+    //this.props.getCategories();
   }
   render() {
     let {categories,posts,filterPosts,filter} = this.props;
@@ -38,7 +38,7 @@ class Main extends Component {
 // It takes in the store's state, an optional ownprops argument, and returns an object.
  function mapStateToProps ({categories, posts}) {
    return {
-   	categories: categories.categories,
+   	//categories: categories.categories,
    	posts: posts.posts,
     filter:posts.filter
    }
@@ -47,7 +47,7 @@ class Main extends Component {
 // mapDispatchToProps()  this will help to reduces our code little bit . we can bind
  function mapDispatchToProps (dispatch) {
    return {
-   	getCategories: () => dispatch(getCategories()),
+   	//getCategories: () => dispatch(getCategories()),
    receivePostsSuccess: () => dispatch(receivePostsSuccess()),
    filterPosts: (filter) => dispatch(filterPosts(filter))
    }

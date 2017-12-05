@@ -7,22 +7,22 @@ import { Link } from 'react-router-dom';
  	handleSubmit = (event) => {
  		event.preventDefault();
 
- 		let elems = event.currentTarget.elements;
+ 		let size = event.currentTarget.elements;
  		let options = {};
 
- 		for (let i = 0; i < elems.length; i++) {
- 			options[elems[i].name] = elems[i].value;
+ 		for (let i = 0; i < size.length; i++) {
+ 			options[size[i].name] = size[i].value;
  		}
 
  		options.id = Math.floor(Math.random() * 1000000);
  		options.timestamp = new Date().getTime();
  		options.parentId = this.props.post.id;
 
- 		this.props.addComment(options,this.props.post.id);
+ 		this.props.addCommentsSuccess(options,this.props.post.id);
  	}
 
  	render() {
- 		const {post, addComment,comment} = this.props;
+ 		const {post, addCommentsSuccess,comment} = this.props;
 
  		return (
  			<form onSubmit={this.handleSubmit}>

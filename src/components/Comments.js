@@ -6,19 +6,16 @@ import EditComments from './EditComments'
 
 class Comments extends Component {
   render() {
-  	let {currentComment,comments, filter, filterComments,handleVote,handleEdit,handleDelete,handleUpdate,postID,isEditing} = this.props;
- 		let sortedComments;
-
+  	let {commentId,comments, filter, filterComments,handleVote,handleEdit,handleDelete,handleUpdate,postID,edit} = this.props;
+ 		let sortCommentsAsc;
  		if (comments) {
- 			sortedComments = comments.sort((a,b) => {
+ 			sortCommentsAsc = comments.sort((a,b) => {
  				if (a[filter] > b[filter]) {
  					return -1;
  				}
-
  				if (a[filter] < b[filter]) {
  					return 1;
  				}
-
  				return 0;
  			});
  		}
@@ -27,22 +24,20 @@ class Comments extends Component {
  			<div>
  				<h1>comments</h1>
  				<select value={filter} onChange={(event) => {filterComments(event.target.value)}}>
- 					<option value="voteScore">voteScore</option>
- 					<option value="timestamp">timestamp</option>
+          <option value="timestamp">timestamp</option>
+          <option value="voteScore">voteScore</option>
  				</select>
  				<ul>
- 					{comments && comments.map((item) => {
- 						return (<div>
- 							{item.body} by {item.author}
- 							votes: {item.voteScore}
+ 					{sortCommentsAsc && sortCommentsAsc.map((item,index) => {
+ 						return (<div key={index}>
+ 							{item.body} by {item.author}<br></br>
+ 							votes: {item.voteScore}<br></br>
  							time: {item.timestamp}
-              <CommentVote commentID={item.id} handleVote={handleVote} postID={postID} />
-              <button onClick={() => handleEdit(item,postID)}>edit</button>
-  						<button onClick={() => handleDelete(item.id,postID)}>delete</button>
-              {(currentComment && isEditing) && item.id === currentComment.id && <EditComments
-  								handleUpdate={handleUpdate}
-								  comment={item}
-								  postID={postID} />}
+              <CommentVote  handleVote={handleVote} postID={postID} commentID={item.id}/>
+              <button onClick={() => handleEdit(item,postID)}>Edit</button>
+  						<button onClick={() => handleDelete(item.id,postID)}>Delete</button>
+              {(commentId && edit) && item.id === commentId.id &&
+                <EditComments handleUpdate={handleUpdate} comment={item} postID={postID} />}
  						</div>)
  					})}
  				</ul>
