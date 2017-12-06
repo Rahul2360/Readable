@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+//import logo from './logo.svg';
 import './App.css';
-import {withRouter, Route} from 'react-router-dom';
-import {connect} from 'react-redux';
+import { Route} from 'react-router-dom';
+//import {connect} from 'react-redux';
 import Main from './containers/Main';
 import Category from './containers/Category';
 import CreateForm from './containers/CreateForm';

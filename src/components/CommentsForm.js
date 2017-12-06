@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
-import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+//import PropTypes from 'prop-types';
+//import { Link } from 'react-router-dom';
 
 // this component hepls us to create new comments for a particular post
  class CommentForm extends Component {
@@ -20,10 +20,11 @@ import { Link } from 'react-router-dom';
  		options.parentId = this.props.post.id;
 
  		this.props.addCommentsSuccess(options,this.props.post.id);
+    window.location = '/';
  	}
 // result of following code is displayed in the screen
  	render() {
- 		const {post, addCommentsSuccess,comment} = this.props;
+ 		//const {post, addCommentsSuccess,comment} = this.props;
 
  		return (
  			<form onSubmit={this.handleSubmit}>

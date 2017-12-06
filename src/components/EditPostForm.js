@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
-import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+//import PropTypes from 'prop-types';
+//import { Link } from 'react-router-dom';
 
 // This component helps us to edit our post
 class EditPostForm extends Component {

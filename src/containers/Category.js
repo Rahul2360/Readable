@@ -1,12 +1,12 @@
 import React, {Component} from 'react';
-import PropTypes from 'prop-types';
+//import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import {categoryPostsSuccess,filterPosts} from '../actions/postAction';
-import {getCategories} from '../actions/categoryAction';
+//import {getCategories} from '../actions/categoryAction';
 import Posts from '../components/Posts';
-import Categories from '../components/Categories';
+//import Categories from '../components/Categories';
 
 class Category extends Component {
   componentDidMount() {
@@ -22,7 +22,7 @@ class Category extends Component {
 		}
 	}
   render() {
-    let {posts,categories,filter,filterPosts} = this.props;
+    let {posts,filter,filterPosts} = this.props;
     return (
       <div>
 

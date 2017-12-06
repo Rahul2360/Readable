@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
-import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+//import PropTypes from 'prop-types';
+//import { Link } from 'react-router-dom';
 
 // This component helps us to edit a particular comment
  class EditComment extends Component {
@@ -29,7 +29,7 @@ import { Link } from 'react-router-dom';
   	}
 // result of following code is displayed on the screen
   	render() {
- 		const {comment} = this.props;
+ 		//const {comment} = this.props;
 
  		return (
  			<form onSubmit={this.handleSubmit}>

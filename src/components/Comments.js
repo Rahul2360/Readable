@@ -1,14 +1,14 @@
 import React, {Component} from 'react';
-import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+//import PropTypes from 'prop-types';
+//import { Link } from 'react-router-dom';
 import CommentVote from './CommentVote';
 import EditComments from './EditComments'
-import {voteCommentsSuccess} from '../actions/commentsActions'
+//import {voteCommentsSuccess} from '../actions/commentsActions'
 
 // iN this comments are displayed and sorted you can perform different function on comments like editing, deleting, voting
 class Comments extends Component {
   render() {
-  	let {voteCommentsSuccess,commentId,comments, filter, filterComments,handleVote,handleEdit,handleDelete,handleUpdate,postID,edit} = this.props;
+  	let {commentId,comments, filter, filterComments,handleVote,handleEdit,handleDelete,handleUpdate,postID,edit} = this.props;
  		let sortCommentsAsc;
     // following code helps us to sort the comments in a particular way
  		if (comments) {

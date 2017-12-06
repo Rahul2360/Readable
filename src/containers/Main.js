@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
-import PropTypes from 'prop-types';
+//import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-import {getCategories} from '../actions/categoryAction';
+//import {getCategories} from '../actions/categoryAction';
 import {receivePostsSuccess,filterPosts} from '../actions/postAction';
 
 import Categories from '../components/Categories';

@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import PropTypes from 'prop-types';
+//import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PostVote from '../components/PostVote';
@@ -20,7 +20,6 @@ class Post extends Component {
 			<div>
 				<Link to={`/post/${post.id}`}>{post.title}</Link>
 				<div>Author: {post.author}</div>
-				<div>Comments: {post.comments}</div>
 				<div>Votes: {post.voteScore}</div>
 				<div>Timestamp:{post.timestamp}</div>
 				<Link to={`/create/${post.id}`}>Edit this post</Link>

@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
- import PropTypes from 'prop-types';
+//import PropTypes from 'prop-types';
 
  class CommentVote extends Component {
  	// upVote and downVote is picked up from the comments.js file at rreactnd-readable-starter-code

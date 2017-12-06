@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import PropTypes from 'prop-types';
+//import PropTypes from 'prop-types';
 
 // upVote and downVote is picked up from the vote.js file at rreactnd-readable-starter-code
 class votePost extends Component {
