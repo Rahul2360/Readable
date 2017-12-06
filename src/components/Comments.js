@@ -25,6 +25,7 @@ class Comments extends Component {
 // this is displayed on our webpages
  		return (
  			<div>
+        <p>Comments:{comments.length}</p>
  				<h1>comments</h1>
  				<select value={filter} onChange={(event) => {filterComments(event.target.value)}}>
           <option value="timestamp">timestamp</option>
