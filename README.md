@@ -4,7 +4,7 @@ You can find the most recent version of this guide [here](https://github.com/fac
 
 ## CURRENTLY STYLING IS NOT DONE IN THIS PROJECT
 
-# Readble project
+# Readable project
  This is a website on which you can add post, delete posts, add comments on particular post , delete comments. 
  This app is bulid on the react and redux
  
@@ -12,7 +12,7 @@ You can find the most recent version of this guide [here](https://github.com/fac
 You can run this app by installing npm in your machine.
 There are the methods for this
 1. First clone or download the repository on your local machine
-2. Download one more repository named readble starter from the link [server](https://github.com/udacity/reactnd-project-readable-starter)
+2. Download one more repository named readable starter from the link [server](https://github.com/udacity/reactnd-project-readable-starter)
 3. Run the command ```npm install``` on your terminal . you can further read about in the beloww section about npml
 4. After installing the npm in your machine open the command prompt and type ```npm start```
 
@@ -22,6 +22,8 @@ There are some prerequisities for this app like ```Redux``` and ```react```
 ### Testing
  This app is tested on the on my laptop.
 
+### Server screenshot
+![Alt text](Untitled.png)
 ## Updating to New Releases
 
 Create React App is divided into two packages:
