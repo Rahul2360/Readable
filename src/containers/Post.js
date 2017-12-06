@@ -41,14 +41,20 @@ changeAuthor = (event) => {
      let {postId,votePostSuccess,deletePostSuccess} = this.props;
      let {commentsId,filter,filterComments,voteCommentsSuccess,addCommentsSuccess} = this.props;
      let {commentId,editComments,deleteCommentsSuccess,updateCommentsSuccess,edit} = this.props;
+     let emptyPost = true;
+     if(postId) {
+       if(Object.keys(postId).length >=1) {
+         emptyPost=false;
+       }
+     }
   	return (
  			<div>
-        {postId && <div>
+        {emptyPost && <h3>Post Deleted</h3>}
+        {!emptyPost && postId && <div>
 				<h1>{postId.title}</h1>
  					<p>body: {postId.body}</p>
           <p>author:{postId.author}</p>
           <p>votes: {postId.voteScore}</p>
-          <p>comments:{postId.comments}</p>
           <div>
           <Link to={`/create/${postId.id}`}>Edit</Link><br></br>
           <button onClick={() => deletePostSuccess(postId.id)}>Delete</button>

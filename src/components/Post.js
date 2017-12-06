@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 //import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import {createHashHistory} from 'history';
 import { connect } from 'react-redux';
 import PostVote from '../components/PostVote';
 import {deletePostSuccess, votePostSuccess} from '../actions/postAction';
@@ -37,9 +38,10 @@ function mapStateToProps () {
   }
 }
 // action to be dispatched
+const browserHistory = createHashHistory()
 function mapDispatchToProps (dispatch) {
   return {
-  	deletePostSuccess: (postID) => dispatch(deletePostSuccess(postID)),
+  	deletePostSuccess: (postID) => dispatch(deletePostSuccess(postID), browserHistory.push('/')),
   	votePostSuccess: (postID, option) => dispatch(votePostSuccess(postID, option))
   }
 }
