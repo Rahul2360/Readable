@@ -1,4 +1,6 @@
-import React, {Component} from 'react';
+import React, {Component} from 'react'
+import { votePostSuccess } from '../actions/postAction';
+import {connect} from 'react-redux';
 //import PropTypes from 'prop-types';
 
 // upVote and downVote is picked up from the vote.js file at rreactnd-readable-starter-code
@@ -7,11 +9,19 @@ class votePost extends Component {
  		let {handleVote, postID} = this.props;
  		return (
  			<div>
- 				<button onClick={() => handleVote(postID, "upVote")}>up</button>
- 				<button onClick={() => handleVote(postID, 'downVote')}>down</button>
+ 				<button onClick={() => this.props.vp(postID, "upVote")}>up</button>
+ 				<button onClick={() => this.props.vp(postID, 'downVote')}>down</button>
  			</div>
  		)
  	}
  }
 
-export default votePost;
+ const mapDispatchToProps = (dispatch) => {
+   return {
+     vp: (id,op) => {
+       dispatch(votePostSuccess(id, op))
+     }
+   }
+ }
+
+export default connect(null,mapDispatchToProps)(votePost);

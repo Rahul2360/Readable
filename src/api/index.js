@@ -36,8 +36,11 @@ export function categoryPostsSuccess(category) {
 // Following function helps to voting the post
 export function votePostSuccess(postID,option){
   return fetch(`${BASE}/posts/${postID}`, {
-    headers:header.headers,
     method:'POST',
+    headers: {
+      ...header.headers,
+      'Content-Type': 'application/json'
+    },
     body:JSON.stringify({option:option})
   }).then((out) => {
     return out.json()
@@ -91,9 +94,12 @@ export function addCommentsSuccess(options,postID){
 // Following function helps us to vote the comment
 export function voteCommentsSuccess(commentID,option,postID){
   return fetch(`${BASE}/comments/${commentID}`, {
-    headers:header.headers,
     method:'POST',
-    body:JSON.stringify({options:option})
+    headers: {
+      ...header.headers,
+      'Content-Type': 'application/json'
+    },
+    body:JSON.stringify({option:option})
   }).then((out) => {
     return out.json()
   })
