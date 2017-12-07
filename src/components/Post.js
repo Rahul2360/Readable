@@ -23,7 +23,7 @@ class Post extends Component {
 				<div>Author: {post.author}</div>
 				<div>Votes: {post.voteScore}</div>
 				<div>Timestamp:{post.timestamp}</div>
-				<div>Comments: {post.comments}</div>
+				<div>Comments: {post.commentCount}</div>
 				<Link to={`/create/${post.id}`}>Edit this post</Link>
 				<button onClick={() => deletePostSuccess(post.id)}>Delete</button>
 				<PostVote
