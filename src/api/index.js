@@ -56,8 +56,11 @@ export function deletePostSuccess(postID) {
 // Follwing function helps to create new post
 export function  createPostSuccess(options){
   return fetch(`${BASE}/posts`, {
-    headers:header.headers,
     method:'POST',
+    headers: {
+      ...header.headers,
+      'Content-Type': 'application/json'
+    },
     body:JSON.stringify(options)
   }).then((out) => {
     return out.json()
@@ -66,8 +69,11 @@ export function  createPostSuccess(options){
 // Follwing function helps to edit the posts
 export function editPostSuccess(postID,options){
   return fetch(`http:///localhost:5001/posts/${postID}`, {
-    headers:header.headers,
     method:'PUT',
+    headers: {
+      ...header.headers,
+      'Content-Type': 'application/json'
+    },
     body:JSON.stringify(options)
   }).then((out) => {
     return out.json()
@@ -84,8 +90,11 @@ export function getCommentsSuccess(postID) {
 // Following function helps us t adding new comments
 export function addCommentsSuccess(options,postID){
   return fetch(`${BASE}/comments`, {
-    headers:header.headers,
     method:'POST',
+    headers: {
+      ...header.headers,
+      'Content-Type': 'application/json'
+    },
     body:JSON.stringify(options)
   }).then((out) => {
     return out.json()
@@ -117,7 +126,10 @@ export function deleteCommentsSuccess(commentID,postID){
 // Following function helps us to delete our comments
 export function updateCommentsSuccess(commentID,options,postID) {
   return fetch(`${BASE}/comments/${commentID}`,{
-    headers:header.headers,
+    headers: {
+      ...header.headers,
+      'Content-Type': 'application/json'
+    },
     method:'PUT',
     body:JSON.stringify(options)
   }).then((out) => {

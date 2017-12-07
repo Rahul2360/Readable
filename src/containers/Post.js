@@ -87,7 +87,7 @@ changeAuthor = (event) => {
       getCommentsSuccess:(postID) => dispatch(getCommentsSuccess(postID)),
       filterComments:(filter) => dispatch(filterComments(filter)),
       addCommentsSuccess:(option,postID) =>dispatch(addCommentsSuccess(option)),
-      voteCommentsSuccess:(commentID,options,postID) => dispatch(voteCommentsSuccess(commentID,options)),
+      voteCommentsSuccess:(commentID,options,postID) => dispatch(voteCommentsSuccess(commentID,options,postID)),
       editComments:(comment,postID) => dispatch(editComments(comment)),
       deleteCommentsSuccess:(commentID,postID) => dispatch(deleteCommentsSuccess(commentID)),
       updateCommentsSuccess:(commentID,options,postID) => dispatch(updateCommentsSuccess(commentID,options,postID))

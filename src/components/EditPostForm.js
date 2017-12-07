@@ -38,7 +38,7 @@ class EditPostForm extends Component {
 			options[size[i].name] = size[i].value;
 		}
 window.location = '/';
-		//this.props.editPostSuccess(this.props.post.id, options);
+		this.props.editPostSuccess(this.props.post.id, options);
 	}
 // following code is displayed on the screen
 	render() {

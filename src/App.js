@@ -18,8 +18,8 @@ class App extends Component {
         <div className="App">
           <Switch>
           <Route exact path="/" render={() => (<Main />)} />
-          <Route exact path="/post/:id" component={Post} />
-          <Route exact path="/category/:name" component={Category} />
+          <Route exact path="/:name/:id" component={Post} />
+          <Route exact path="/:name" component={Category} />
           <Route exact path="/create/:id" component={CreateForm} />
           <Route exact path="/create" component={CreateForm} />
         </Switch>

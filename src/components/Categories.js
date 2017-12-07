@@ -15,7 +15,7 @@ class Categories extends Component {
 			<div>
 					{categories && categories.map((item,index) => {
 						return (<li key={index}>
-							<Link to={`/category/${item.name}`}>{item.name}</Link>
+							<Link to={`/${item.name}`}>{item.name}</Link>
 						</li>
 						)
 					})

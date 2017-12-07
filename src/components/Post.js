@@ -19,10 +19,11 @@ class Post extends Component {
 
 		return (
 			<div>
-				<Link to={`/post/${post.id}`}>{post.title}</Link>
+				<Link to={`/${post.category}/${post.id}`}>{post.title}</Link>
 				<div>Author: {post.author}</div>
 				<div>Votes: {post.voteScore}</div>
 				<div>Timestamp:{post.timestamp}</div>
+				<div>Comments: {post.comments}</div>
 				<Link to={`/create/${post.id}`}>Edit this post</Link>
 				<button onClick={() => deletePostSuccess(post.id)}>Delete</button>
 				<PostVote
